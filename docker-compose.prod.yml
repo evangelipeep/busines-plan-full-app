@@ -1,0 +1,41 @@
+version: '3.6'
+services:
+  berikard-service:
+    container_name: berikard-service
+    build:
+      context: ./
+      dockerfile: ./dockerfiles/Dockerfile.prod
+    restart: always
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env
+    volumes:
+      - dist:/app/berikard-service/dist
+      - .:/app/berikard-service
+      - node_modules:/app/berikard-service/node_modules
+    networks:
+      - berikard-mongo-network
+    depends_on:
+      - berikard-mongo-database
+
+  berikard-mongo-database:
+    container_name: berikard-mongo-database
+    image: mongo
+    restart: unless-stopped
+    ports:
+      - 27017:21017
+    env_file:
+      - ./.env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_DB_PASSWORD}
+    networks:
+      - berikard-mongo-network
+
+volumes:
+  node_modules:
+  dist:
+
+networks:
+  berikard-mongo-network:
