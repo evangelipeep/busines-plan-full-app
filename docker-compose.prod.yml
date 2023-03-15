@@ -3,13 +3,13 @@ services:
   berikard-service:
     container_name: berikard-service
     build:
-      context: ./
+      context: ./backend
       dockerfile: ./dockerfiles/Dockerfile.prod
     restart: always
     ports:
       - 8000:8000
     env_file:
-      - ./.env
+      - ./backend/.env
     volumes:
       - dist:/app/berikard-service/dist
       - .:/app/berikard-service
