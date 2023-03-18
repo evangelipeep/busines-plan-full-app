@@ -9,7 +9,7 @@ export const Contacts = () => {
   return (
     <>
       <section className="text-center mx-auto mt-[20vh]">
-        <h1 className="text-xl font-bold pb-20">Контакты</h1>
+        <h1 className="text-xl font-bold pb-[5vh] md:pb-[15vh]">Контакты</h1>
         <ul className="grid grid-cols-2 xl:grid-cols-4">
           <li className={styleEl}>
             <Telephone />

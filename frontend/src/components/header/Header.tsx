@@ -41,7 +41,7 @@ export const Header = () => {
 
   return (
     <>
-      <header className="bg-my-green">
+      <header className="bg-my-green absolute w-screen">
         <nav className="flex justify-between items-center w-[90%] mx-auto py-2">
           <NavLink to="/">
             <motion.div initial="hidden" animate="visible" variants={pVariants}>
@@ -49,7 +49,7 @@ export const Header = () => {
             </motion.div>
           </NavLink>
           <div className={`${mobileNavOpen ? menuCloseStyle : menuOpenStyle}`}>
-            <ul className="absolute md:static w-full flex flex-col md:flex-row md:items-center gap-8 md:gap-[4vw] bg-my-green left-0 top-[55px] text-center py-7">
+            <ul className="absolute md:static w-full flex flex-col md:flex-row md:items-center gap-8 md:gap-[4vw] bg-my-green shadow-2xl md:shadow-none left-0 top-[55px] text-center py-7">
               <motion.li
                 className={`${howerWhite}`}
                 whileHover="hidden"

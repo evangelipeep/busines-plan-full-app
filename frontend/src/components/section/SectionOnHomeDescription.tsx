@@ -1,6 +1,6 @@
 export const SectionOnHomeDescription = () => {
   return (
-    <section className=" flex bg-my-green-2" id="description">
+    <section className=" flex bg-my-green" id="description">
       <div className="container mx-auto py-[10vh] space-y-3 w-3/4 text-lg">
         <p>
           <strong>Бизнес план</strong> – это документ, который отвечает на все

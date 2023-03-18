@@ -2,9 +2,9 @@ import { GridElement } from './../GridElement'
 
 export const SectionOnHomeTable = () => {
   return (
-    <section className="bg-my-green py-[10vh]">
+    <section className="bg-my-green pb-[10vh]">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-center font-bold text-2xl pb-[5vh]">
+        <h1 className="text-center font-bold text-2xl pb-[7vh]">
           Проект можно разработать в любой отрасли
         </h1>
 

@@ -34,7 +34,7 @@ export const Auth = () => {
   }
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
+    <section className="mt-[10vh]">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-[80vh] lg:py-0">
         <div className="w-full xl:w-[80vh] bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -93,7 +93,7 @@ export const Auth = () => {
                 </div>
                 <a
                   href="#"
-                  className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  className="text-sm font-medium text-primary-600 hover:underline dark:text-white "
                 >
                   Забыли пароль?
                 </a>
