@@ -34,6 +34,7 @@ export const FormСalculator: React.FC = () => {
               Несколько видов деятельности{' '}
             </option>
           </select>
+
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             В каком состоянии у Вас исходные данные для планирования (план
             продаж, перечень необходимого оборудования, план по персоналу,
@@ -61,11 +62,10 @@ export const FormСalculator: React.FC = () => {
               структурировать
             </option>
           </select>
+
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Требуется ли расширенная поддержка? (По умолчанию мы осуществляем
-            поддержку всех проектов в течение 2 месяцев. Для ФРП, ОЭЗ, крупных
-            госбанков поддержка оказывается в течение всего периода рассмотрения
-            заявки на финансирование.)
+            поддержку всех проектов в течение 2 месяцев.)
           </label>
           <select
             className="rounded-lg"
@@ -103,6 +103,14 @@ export const FormСalculator: React.FC = () => {
             </div>
             <div className="flex justify-between">
               <label>Сайт проекта (лендинг, визитка)</label>
+              <input
+                {...register('q4')}
+                type="radio"
+                value=" Сайт проекта (лендинг, визитка)"
+              />
+            </div>
+            <div className="flex justify-between">
+              <label>Не нужно</label>
               <input
                 {...register('q4')}
                 type="radio"
