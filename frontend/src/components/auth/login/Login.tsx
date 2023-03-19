@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Button } from '../button/Button'
+import { Button } from '../../button/Button'
+import { Link } from 'react-router-dom'
 
-export const Auth = () => {
+export const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [emailDirty, setEmailDirty] = useState(false)
@@ -34,7 +35,7 @@ export const Auth = () => {
   }
 
   return (
-    <section className="mt-[10vh]">
+    <section className=" h-screen mt-[10vh] xl:mt-32">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-[80vh] lg:py-0">
         <div className="w-full xl:w-[80vh] bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -91,12 +92,12 @@ export const Auth = () => {
                     </label>
                   </div>
                 </div>
-                <a
-                  href="#"
+                <Link
+                  to="forgot"
                   className="text-sm font-medium text-primary-600 hover:underline dark:text-white "
                 >
                   Забыли пароль?
-                </a>
+                </Link>
               </div>
               <button
                 type="submit"
@@ -106,12 +107,12 @@ export const Auth = () => {
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Ещё нет аккаунта?{' '}
-                <a
-                  href="#"
+                <Link
+                  to="/register"
                   className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >
                   Регистрация
-                </a>
+                </Link>
               </p>
 
               <button type="submit">
