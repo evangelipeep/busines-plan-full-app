@@ -23,6 +23,8 @@ services:
     restart: unless-stopped
     ports:
       - 8000:8000
+    env_file:
+      - ./.env  
     
     volumes:
       - node_modules:/app/berikard-service/node_modules
@@ -43,6 +45,7 @@ services:
     restart: unless-stopped
     ports:
       - 3000:3000
+    
     volumes:
       - node_modules:/app/berikard-frontend/node_modules
       - .:/app/berikard-frontend
