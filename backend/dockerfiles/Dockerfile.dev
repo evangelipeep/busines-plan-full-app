@@ -1,9 +1,7 @@
 FROM node:16-alpine
 
-WORKDIR /app/berikard-service
-COPY package.json \
-    tsconfig.json \
-    ./
+WORKDIR /api/berikard-service
+COPY . .
 
 RUN npm install
 
