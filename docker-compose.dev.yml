@@ -39,12 +39,13 @@ services:
     image: berikard-frontend
     build:
       context: ./frontend
-      target: production
       dockerfile: ./dockerfiles/Dockerfile.dev
-    command: npm start
+
     restart: unless-stopped
     ports:
       - 3000:3000
+    env_file:
+      - ./frontend/.env    
     
     volumes:
       - node_modules:/app/berikard-frontend/node_modules

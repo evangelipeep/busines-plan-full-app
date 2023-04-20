@@ -33,6 +33,27 @@ services:
     networks:
       - berikard-mongo-network
 
+  berikard-frontend:
+    container_name: frontend
+    image: berikard-frontend
+    build:
+      context: ./frontend
+      dockerfile: ./dockerfiles/Dockerfile.dev
+
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    env_file:
+      - ./frontend/.env    
+    
+    volumes:
+      - node_modules:/app/berikard-frontend/node_modules
+      - .:/app/berikard-frontend
+    networks:
+      - berikard-mongo-network
+    depends_on:
+      - berikard-mongo-database      
+
 volumes:
   node_modules:
   dist:
