@@ -16,10 +16,10 @@ import { AuthModule } from './auth/auth.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => {
-        const host: string = configService.get<string>('MONGO_DB_HOST');
-        const user: string = configService.get<string>('MONGO_DB_USER');
-        const password: string = configService.get<string>('MONGO_DB_PASSWORD');
-        const port: number = configService.get<number>('MONGO_DB_PORT');
+        const host: string = configService.get<string>('APP_MONGO_DB_HOST');
+        const user: string = configService.get<string>('APP_MONGO_DB_USER');
+        const password: string = configService.get<string>('APP_MONGO_DB_PASSWORD');
+        const port: number = configService.get<number>('APP_MONGO_DB_PORT');
 
         return { uri: `mongodb://${user}:${password}@${host}:${port}` };
       },

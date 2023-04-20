@@ -33,7 +33,7 @@ export class PasswordCryptorService implements PasswordCryptorUseCase {
    * @param configService config service.
    */
   constructor(@Inject() private readonly configService: ConfigService) {
-    this._saltRounds = Number(configService.get<number>('APP_BCRYPT_SALT_ROUNDS'));
+    this._saltRounds = Number(configService.get<number>('BACKEND_APP_BCRYPT_SALT_ROUNDS'));
   }
 
   /**
