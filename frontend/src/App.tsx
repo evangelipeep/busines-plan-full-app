@@ -20,9 +20,9 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route element={<PrivatRoute />}>
               <Route path="profile" element={<ProfilePage />} />
+              <Route path="calculator" element={<СalculatorPage />} />
             </Route>
             <Route index element={<HomePage />} />
-            <Route path="calculator" element={<СalculatorPage />} />
             <Route path="contacts" element={<СontactsPage />} />
 
             <Route path="login" element={<AuthRootComponent />} />

@@ -15,7 +15,7 @@ export const AuthRootComponent = () => {
           alignContent="center"
           flexDirection="column"
           maxWidth={640}
-          margin="auto"
+          margin="20vh auto"
           padding={5}
           borderRadius={5}
           boxShadow="5px 5px 10px #ccc"
