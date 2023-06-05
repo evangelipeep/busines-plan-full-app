@@ -37,9 +37,9 @@ export const Login = () => {
   return (
     <section className=" h-screen mt-[10vh] xl:mt-32">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-[80vh] lg:py-0">
-        <div className="w-full xl:w-[80vh] bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full xl:w-[80vh] bg-white rounded-lg shadow ">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
               Вход
             </h1>
             <form className="space-y-4 md:space-y-6" action="#">
@@ -47,7 +47,7 @@ export const Login = () => {
                 {emailDirty && emailError && (
                   <div className="text-red-500">{emailError}</div>
                 )}
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label className="block mb-2 text-sm font-medium text-gray-900 ">
                   Логин
                 </label>
                 <input

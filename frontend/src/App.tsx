@@ -10,21 +10,26 @@ import { NotfoundPage } from './pages/NotfoundPage'
 import { Register } from './components/auth/register/Register'
 import { Login } from './components/auth/login/Login'
 import { Forgot } from './components/auth/forgot/Forgot'
+import { PrivatRoute } from './components/utils/router/PrivatRoute'
+import { AuthRootComponent } from './components/auth'
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <>
         <Routes>
-          <Route path='/' element={<Layout />}>
+          <Route path="/" element={<Layout />}>
+            <Route element={<PrivatRoute />}>
+              <Route path="profile" element={<ProfilePage />} />
+            </Route>
             <Route index element={<HomePage />} />
-            <Route path='calculator' element={<СalculatorPage />} />
-            <Route path='contacts' element={<СontactsPage />} />
-            <Route path='profile/*' element={<ProfilePage />} />
-              <Route index element={<Login/>}/> 
-              <Route path='register' element={<Register/>}/>
-              <Route path='forgot' element={<Forgot/>}/>
-            <Route path='*' element={<NotfoundPage />} />
+            <Route path="calculator" element={<СalculatorPage />} />
+            <Route path="contacts" element={<СontactsPage />} />
+
+            <Route path="login" element={<AuthRootComponent />} />
+            <Route path="register" element={<AuthRootComponent />} />
+            <Route path="forgot" element={<Forgot />} />
+            <Route path="*" element={<NotfoundPage />} />
           </Route>
         </Routes>
       </>
