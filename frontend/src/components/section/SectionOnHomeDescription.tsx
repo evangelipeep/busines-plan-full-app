@@ -1,9 +1,11 @@
 export const SectionOnHomeDescription = () => {
   return (
-    <section className="flex bg-my-green h-screen" id="description">
+    <section
+      className="flex bg-gradient-to-t from-my-green via-my-green-2 to-gray-50 "
+      id="description"
+    >
       <div className="container mx-auto py-[10vh] space-y-3 w-3/4 text-lg ">
         <p>
-        
           <strong>Бизнес план</strong> – это документ, который отвечает на все
           вопросы, связанные с вашим бизнесом и дает исчерпывающие представление
           о показателях компании в долгосрочной и краткосрочной перспективе и
@@ -29,8 +31,7 @@ export const SectionOnHomeDescription = () => {
           для развития собственного дела от центра занятости.
         </p>
         <p>Обе субсидии можно получить одновременно.</p>
-     
-        </div>
+      </div>
     </section>
   )
 }
