@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { TextField, Typography, Button } from '@mui/material'
 
-export const Login = () => {
+export const Login = (props: any) => {
+  const { setEmail, setPassword } = props
   return (
     <div>
       <Typography variant="h4" padding={3} textAlign="center">
@@ -12,6 +13,7 @@ export const Login = () => {
         Введите свой логин и пароль
       </Typography>
       <TextField
+        onChange={(e) => setEmail(e.target.value)}
         fullWidth={true}
         margin="normal"
         label="Email"
@@ -19,6 +21,7 @@ export const Login = () => {
         placeholder="Введите свою почту..."
       />
       <TextField
+        onChange={(e) => setPassword(e.target.value)}
         type="password"
         fullWidth={true}
         margin="normal"
@@ -27,6 +30,7 @@ export const Login = () => {
         placeholder="Введите пароль..."
       />
       <Button
+        type="submit"
         variant="contained"
         sx={{ marginTop: 2, marginBottom: 2, width: '100%' }}
       >

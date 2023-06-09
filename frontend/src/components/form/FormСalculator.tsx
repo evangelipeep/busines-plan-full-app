@@ -1,6 +1,6 @@
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { IForm } from '../../types/form.interface'
+import { IForm } from '../../common/types/form.interface'
 import { Button } from '../button/Button'
 
 export const FormСalculator: React.FC = () => {

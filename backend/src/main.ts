@@ -8,7 +8,11 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const configService = new ConfigService();
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule {
+    cors: {
+      origin: ['http://localhost:3000']
+    }
+  });
 
   app.useGlobalPipes(
     new ValidationPipe({

@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { TextField, Typography, Button } from '@mui/material'
 
-export const Register = () => {
+export const Register = (props: any) => {
+  const { setEmail, setPassword } = props
   return (
     <div>
       <Typography variant="h4" padding={3} textAlign="center">
@@ -11,7 +12,7 @@ export const Register = () => {
       <Typography variant="body1" textAlign="center">
         Введите данные для регистрации
       </Typography>
-      <TextField
+      {/* <TextField
         fullWidth={true}
         margin="normal"
         label="Имя"
@@ -24,13 +25,14 @@ export const Register = () => {
         label="Username"
         variant="outlined"
         placeholder="Введите username.."
-      />
+      /> */}
       <TextField
         fullWidth={true}
         margin="normal"
         label="Email"
         variant="outlined"
         placeholder="Введите свою почту..."
+        onChange={(e) => setEmail(e.target.value)}
       />
       <TextField
         type="password"
@@ -39,16 +41,18 @@ export const Register = () => {
         label="Password"
         variant="outlined"
         placeholder="Введите пароль..."
+        onChange={(e) => setPassword(e.target.value)}
       />
-      <TextField
+      {/* <TextField
         type="password"
         fullWidth={true}
         margin="normal"
         label="Password"
         variant="outlined"
         placeholder="Повторите свой пароль..."
-      />
+      /> */}
       <Button
+        type="submit"
         variant="contained"
         sx={{ marginTop: 2, marginBottom: 2, width: '100%' }}
       >
