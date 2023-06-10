@@ -7,6 +7,7 @@ import { Box } from '@mui/material'
 import { instance } from '../utils/axios'
 
 export const AuthRootComponent = () => {
+  const [login, setLogin] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const location = useLocation()
@@ -15,6 +16,7 @@ export const AuthRootComponent = () => {
     e.preventDefault()
     if (location.pathname === '/login') {
       const userData = {
+        login,
         email,
         password,
       }
@@ -22,6 +24,7 @@ export const AuthRootComponent = () => {
       console.log(user.data)
     } else {
       const userData = {
+        login,
         email,
         password,
       }
@@ -45,9 +48,13 @@ export const AuthRootComponent = () => {
           boxShadow="5px 5px 10px #ccc"
         >
           {location.pathname === '/login' ? (
-            <Login email={setEmail} password={setPassword} />
+            <Login login={setLogin} email={setEmail} password={setPassword} />
           ) : location.pathname === '/register' ? (
-            <Register email={setEmail} password={setPassword} />
+            <Register
+              login={setLogin}
+              email={setEmail}
+              password={setPassword}
+            />
           ) : null}
         </Box>
       </form>

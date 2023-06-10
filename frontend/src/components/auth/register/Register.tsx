@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { TextField, Typography, Button } from '@mui/material'
 
 export const Register = (props: any) => {
-  const { setEmail, setPassword } = props
+  const { setEmail, setPassword, setLogin } = props
   return (
     <div>
       <Typography variant="h4" padding={3} textAlign="center">
@@ -12,20 +12,7 @@ export const Register = (props: any) => {
       <Typography variant="body1" textAlign="center">
         Введите данные для регистрации
       </Typography>
-      {/* <TextField
-        fullWidth={true}
-        margin="normal"
-        label="Имя"
-        variant="outlined"
-        placeholder="Введите имя.."
-      />
-      <TextField
-        fullWidth={true}
-        margin="normal"
-        label="Username"
-        variant="outlined"
-        placeholder="Введите username.."
-      /> */}
+
       <TextField
         fullWidth={true}
         margin="normal"
@@ -33,6 +20,14 @@ export const Register = (props: any) => {
         variant="outlined"
         placeholder="Введите свою почту..."
         onChange={(e) => setEmail(e.target.value)}
+      />
+      <TextField
+        fullWidth={true}
+        margin="normal"
+        label="Логин"
+        variant="outlined"
+        placeholder="Введите логин.."
+        onChange={(e) => setLogin(e.target.value)}
       />
       <TextField
         type="password"
@@ -43,18 +38,16 @@ export const Register = (props: any) => {
         placeholder="Введите пароль..."
         onChange={(e) => setPassword(e.target.value)}
       />
-      {/* <TextField
-        type="password"
-        fullWidth={true}
-        margin="normal"
-        label="Password"
-        variant="outlined"
-        placeholder="Повторите свой пароль..."
-      /> */}
+
       <Button
         type="submit"
         variant="contained"
-        sx={{ marginTop: 2, marginBottom: 2, width: '100%' }}
+        sx={{
+          marginTop: 2,
+          marginBottom: 2,
+          width: '100%',
+          backgroundColor: 'green',
+        }}
       >
         Регистрация
       </Button>

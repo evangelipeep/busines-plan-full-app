@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { TextField, Typography, Button } from '@mui/material'
 
 export const Login = (props: any) => {
-  const { setEmail, setPassword } = props
+  const { setEmail, setPassword, setLogin } = props
   return (
     <div>
       <Typography variant="h4" padding={3} textAlign="center">
@@ -21,6 +21,14 @@ export const Login = (props: any) => {
         placeholder="Введите свою почту..."
       />
       <TextField
+        fullWidth={true}
+        margin="normal"
+        label="Логин"
+        variant="outlined"
+        placeholder="Введите логин.."
+        onChange={(e) => setLogin(e.target.value)}
+      />
+      <TextField
         onChange={(e) => setPassword(e.target.value)}
         type="password"
         fullWidth={true}
@@ -32,7 +40,12 @@ export const Login = (props: any) => {
       <Button
         type="submit"
         variant="contained"
-        sx={{ marginTop: 2, marginBottom: 2, width: '100%' }}
+        sx={{
+          marginTop: 2,
+          marginBottom: 2,
+          width: '100%',
+          backgroundColor: 'green',
+        }}
       >
         Войти
       </Button>
