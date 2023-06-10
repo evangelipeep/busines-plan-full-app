@@ -9,7 +9,7 @@ import { NotfoundPage } from './pages/NotfoundPage'
 import ProfilePage from './pages/ProfilePage'
 
 import { Forgot } from './components/auth/forgot/Forgot'
-import { PrivatRoute } from './components/utils/router/PrivatRoute'
+import { PrivatRoute } from './utils/router/PrivatRoute'
 import { AuthRootComponent } from './components/auth'
 
 function App() {
