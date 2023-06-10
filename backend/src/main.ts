@@ -24,8 +24,8 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
 
   const config = new DocumentBuilder()
-    .setTitle('Berikard Project')
-    .setDescription('The "Berikard Project" API descripition.')
+    .setTitle('Anastasia Project')
+    .setDescription('The "Anastasia Project" API descripition.')
     .setVersion('1.0')
     .addTag('berikard')
     .addBearerAuth()

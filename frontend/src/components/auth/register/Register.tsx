@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { TextField, Typography, Button } from '@mui/material'
+import { IPropsRegister } from '../../../common/types'
 
-export const Register = (props: any) => {
-  const { setEmail, setPassword, setLogin } = props
+export const Register: React.FC<IPropsRegister> = (
+  props: IPropsRegister
+): JSX.Element => {
+  const { setEmail, setPassword, setLogin, setRepeatPassword } = props
   return (
     <div>
       <Typography variant="h4" padding={3} textAlign="center">
@@ -37,6 +40,15 @@ export const Register = (props: any) => {
         variant="outlined"
         placeholder="Введите пароль..."
         onChange={(e) => setPassword(e.target.value)}
+      />
+      <TextField
+        type="password"
+        fullWidth={true}
+        margin="normal"
+        label="Password"
+        variant="outlined"
+        placeholder="Повторите пароль..."
+        onChange={(e) => setRepeatPassword(e.target.value)}
       />
 
       <Button

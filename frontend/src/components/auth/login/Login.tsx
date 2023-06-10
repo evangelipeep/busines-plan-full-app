@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { TextField, Typography, Button } from '@mui/material'
+import { IPropsLogin } from '../../../common/types'
 
-export const Login = (props: any) => {
+export const Login: React.FC<IPropsLogin> = (
+  props: IPropsLogin
+): JSX.Element => {
   const { setEmail, setPassword, setLogin } = props
   return (
-    <div>
+    <>
       <Typography variant="h4" padding={3} textAlign="center">
         Авторизация
       </Typography>
@@ -58,6 +61,6 @@ export const Login = (props: any) => {
           Регистрация
         </Link>
       </Typography>
-    </div>
+    </>
   )
 }
