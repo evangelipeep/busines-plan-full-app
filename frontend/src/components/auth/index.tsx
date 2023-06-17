@@ -7,6 +7,7 @@ import { Box } from '@mui/material'
 import { instance } from '../../utils/axios'
 import { useAppDispatch } from '../../utils/hook'
 import { iLogin } from '../../store/slice/auth'
+import { useForm } from 'react-hook-form'
 
 export const AuthRootComponent: React.FC = (): JSX.Element => {
   const [login, setLogin] = useState('')
@@ -16,15 +17,19 @@ export const AuthRootComponent: React.FC = (): JSX.Element => {
   const location = useLocation()
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm()
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault()
+  const handleSubmitForm = async (data: any) => {
     if (location.pathname === '/login') {
       try {
         const userData = {
-          login,
-          email,
-          password,
+          login: data.login,
+          email: data.email,
+          password: data.password,
         }
         const user = await instance.post('auth/sing-in', userData)
         await dispatch(iLogin(user.data))
@@ -50,7 +55,7 @@ export const AuthRootComponent: React.FC = (): JSX.Element => {
 
   return (
     <div className="flex justify-center items-center w-full h-full">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(handleSubmitForm)}>
         <Box
           display="flex"
           justifyContent="center"
@@ -63,11 +68,7 @@ export const AuthRootComponent: React.FC = (): JSX.Element => {
           boxShadow="5px 5px 10px #ccc"
         >
           {location.pathname === '/login' ? (
-            <Login
-              setLogin={setLogin}
-              setEmail={setEmail}
-              setPassword={setPassword}
-            />
+            <Login register={register} errors={errors} />
           ) : location.pathname === '/register' ? (
             <Register
               setLogin={setLogin}
@@ -81,3 +82,9 @@ export const AuthRootComponent: React.FC = (): JSX.Element => {
     </div>
   )
 }
+
+// {
+//   login: string
+//   email: string
+//   password: string
+// }
