@@ -1,43 +1,69 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import {
   Button,
   FormControl,
   FormControlLabel,
   Grid,
-  InputLabel,
   MenuItem,
   Radio,
   RadioGroup,
   Select,
   TextField,
   Typography,
+  Snackbar,
 } from '@mui/material'
-
-interface IForm {
-  q1: string
-  q2: string
-  q3: string
-  q4: string
-  name: string
-  explanation: string
-  email: string
-  phone: string
-  q5: string
-}
+import axios from 'axios'
+import { IForm } from '../../common/types'
 
 export const FormСalculator: React.FC = () => {
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState(false)
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IForm>()
-  const onSubmit: SubmitHandler<IForm> = (data) => console.log(data)
+
+  const onSubmit: SubmitHandler<IForm> = async (data: IForm) => {
+    try {
+      const TOKEN = '6204335027:AAGGWX6BUg3XQWFSasG2Z2yg_Wj1rzGW5Mw'
+      const CHAT_ID = '-1001752310774'
+      const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`
+
+      const message = `
+        <b>Анкета с сайта</b>\n
+        <b>Отправитель: </b> ${data.name}\n
+        <b>Email: </b> ${data.email}\n
+        <b>Пояснение:</b> ${data.explanation}
+        <b>Телефон:</b> ${data.phone}
+        <b>Каков профиль деятельности компании?:</b> ${data.q1}
+        <b>В каком состоянии у Вас исходные данные для планирования (план продаж, перечень необходимого оборудования, план по персоналу, расходная часть и т.п.)?:</b> ${data.q2}
+        <b>Требуется ли расширенная поддержка? (По умолчанию мы осуществляем поддержку всех проектов в течение 2 месяцев.):</b> ${data.q3}
+        <b>Дополнительные услуги:</b> ${data.q4}
+        <b>Другая информация:</b> ${data.q5}
+        
+      `
+
+      await axios.post(URI_API, {
+        chat_id: CHAT_ID,
+        parse_mode: 'html',
+        text: message,
+      })
+
+      setIsSnackbarOpen(true)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+  const handleSnackbarClose = () => {
+    setIsSnackbarOpen(false)
+  }
 
   return (
     <section>
       <div className="flex flex-col mx-auto my-[15vh] w-3/4 bg-gray-50 p-10 rounded-3xl shadow-xl">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form id="tg" onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Typography variant="body1">
@@ -135,9 +161,14 @@ export const FormСalculator: React.FC = () => {
                     label="Сайт проекта (лендинг, визитка)"
                   />
                   <FormControlLabel
-                    value="Не нужно"
+                    value="Продвижение сайта"
                     control={<Radio color="secondary" />}
-                    label="Не нужно"
+                    label="Продвижение сайта"
+                  />
+                  <FormControlLabel
+                    value="Маркетинговая стратегия"
+                    control={<Radio color="secondary" />}
+                    label="Маркетинговая стратегия"
                   />
                 </RadioGroup>
               </FormControl>
@@ -145,21 +176,25 @@ export const FormСalculator: React.FC = () => {
 
             <Grid item xs={12}>
               <TextField
-                {...register('name', { required: true, maxLength: 80 })}
+                {...register('name', { required: true })}
+                label="Имя"
                 variant="outlined"
-                label="ФИО"
+                color="secondary"
                 fullWidth
-                error={errors.name ? true : false}
+                error={Boolean(errors.name)}
+                helperText={
+                  errors.name && 'Поле "Имя" обязательно для заполнения'
+                }
               />
             </Grid>
 
             <Grid item xs={12}>
               <TextField
-                {...register('explanation', { required: true, maxLength: 300 })}
+                {...register('explanation')}
+                label="Пояснение"
                 variant="outlined"
-                label="Суть проекта"
+                color="secondary"
                 fullWidth
-                error={errors.explanation ? true : false}
               />
             </Grid>
 
@@ -167,30 +202,42 @@ export const FormСalculator: React.FC = () => {
               <TextField
                 {...register('email', {
                   required: true,
-                  pattern: /^\S+@\S+$/i,
+                  pattern:
+                    /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/,
                 })}
-                variant="outlined"
                 label="Email"
+                variant="outlined"
+                color="secondary"
                 fullWidth
-                error={errors.email ? true : false}
+                error={Boolean(errors.email)}
+                helperText={
+                  errors.email && 'Поле "Email" обязательно для заполнения'
+                }
               />
             </Grid>
 
             <Grid item xs={12}>
               <TextField
-                {...register('phone', { required: true, maxLength: 12 })}
+                {...register('phone', { required: true })}
+                label="Телефон"
                 variant="outlined"
-                label="Ваш телефон"
+                color="secondary"
                 fullWidth
-                error={errors.phone ? true : false}
+                error={Boolean(errors.phone)}
+                helperText={
+                  errors.phone && 'Поле "Телефон" обязательно для заполнения'
+                }
               />
             </Grid>
 
             <Grid item xs={12}>
+              <Typography variant="body1">
+                Как Вы узнали о нас? (укажите источник информации)
+              </Typography>
               <TextField
                 {...register('q5')}
                 variant="outlined"
-                label="Дополнительная информация"
+                color="secondary"
                 fullWidth
               />
             </Grid>
@@ -199,7 +246,7 @@ export const FormСalculator: React.FC = () => {
               <Button
                 type="submit"
                 variant="contained"
-                color="primary"
+                color="secondary"
                 fullWidth
               >
                 Отправить
@@ -207,6 +254,12 @@ export const FormСalculator: React.FC = () => {
             </Grid>
           </Grid>
         </form>
+        <Snackbar
+          open={isSnackbarOpen}
+          autoHideDuration={3000}
+          onClose={handleSnackbarClose}
+          message="Анкета успешно отправлена"
+        />
       </div>
     </section>
   )
