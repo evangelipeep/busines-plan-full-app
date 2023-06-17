@@ -8,7 +8,11 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const configService = new ConfigService();
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    cors: {
+      origin: ['http://localhost:3000']
+    }
+  });
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -20,8 +24,8 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
 
   const config = new DocumentBuilder()
-    .setTitle('Berikard Project')
-    .setDescription('The "Berikard Project" API descripition.')
+    .setTitle('Anastasia Project')
+    .setDescription('The "Anastasia Project" API descripition.')
     .setVersion('1.0')
     .addTag('berikard')
     .addBearerAuth()
@@ -29,6 +33,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(configService.get<number>('APP_PORT'));
+  await app.listen(configService.get<number>('BACKEND_APP_PORT'));
 }
 bootstrap();

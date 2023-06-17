@@ -35,16 +35,16 @@ const providers: Provider[] = [
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
-        const algorithm: Algorithm = configService.get<Algorithm>('APP_JWT_ALGORITHM');
+        const algorithm: Algorithm = configService.get<Algorithm>('BACKEND_APP_JWT_ALGORITHM');
         const jwtOptions: JwtModuleOptions = {
           signOptions: {
-            expiresIn: configService.get<string>('APP_JWT_EXPIRES_IN'),
+            expiresIn: configService.get<string>('BACKEND_APP_JWT_EXPIRES_IN'),
             algorithm,
           },
         };
 
         if (algorithm.slice(0, 2) === 'HS') {
-          jwtOptions.secret = configService.get<string>('APP_JWT_SECRET');
+          jwtOptions.secret = configService.get<string>('BACKEND_APP_JWT_SECRET');
         } else if (algorithm !== 'none') {
           jwtOptions.publicKey = configService.get<string>('APP_JWT_PUBLIC_KEY');
           jwtOptions.privateKey = configService.get<string>('APP_JWT_PRIVATE_KEY');
