@@ -5,7 +5,6 @@ import {
   FormControl,
   FormControlLabel,
   Grid,
-  InputLabel,
   MenuItem,
   Radio,
   RadioGroup,
@@ -13,18 +12,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
-
-interface IForm {
-  q1: string
-  q2: string
-  q3: string
-  q4: string
-  name: string
-  explanation: string
-  email: string
-  phone: string
-  q5: string
-}
+import { IForm } from '../../common/types'
 
 export const FormСalculator: React.FC = () => {
   const {

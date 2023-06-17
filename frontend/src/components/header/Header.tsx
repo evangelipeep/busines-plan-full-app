@@ -56,7 +56,9 @@ export const Header = () => {
                 whileTap="visible"
                 variants={bVariants}
               >
-                <NavLink to="/">Главная</NavLink>
+                <NavLink to="/" onClick={() => setMobileNavOpen(false)}>
+                  Главная
+                </NavLink>
               </motion.li>
               <motion.li
                 className={`${howerWhite}`}
@@ -64,7 +66,12 @@ export const Header = () => {
                 whileTap="visible"
                 variants={bVariants}
               >
-                <NavLink to="/calculator">Анкета</NavLink>
+                <NavLink
+                  to="/calculator"
+                  onClick={() => setMobileNavOpen(false)}
+                >
+                  Анкета
+                </NavLink>
               </motion.li>
               <motion.li
                 className={`${howerWhite}`}
@@ -72,7 +79,9 @@ export const Header = () => {
                 whileTap="visible"
                 variants={bVariants}
               >
-                <NavLink to="/contacts">Контакты</NavLink>
+                <NavLink to="/contacts" onClick={() => setMobileNavOpen(false)}>
+                  Контакты
+                </NavLink>
               </motion.li>
             </ul>
           </div>

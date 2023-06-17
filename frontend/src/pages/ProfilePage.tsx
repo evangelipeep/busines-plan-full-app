@@ -1,44 +1,106 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Button } from '../components/button/Button'
+import {
+  Avatar,
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+  TextField,
+  Typography,
+} from '@mui/material'
+import { styled } from '@mui/system'
+
+const CenteredContainer = styled('div')`
+  @apply flex flex-col items-center p-4 rounded border border-gray-300 shadow-md;
+`
 
 const ProfilePage: React.FC = () => {
+  const [status, setStatus] = useState('')
+  const [avatar, setAvatar] = useState('')
+  const [users, setUsers] = useState([
+    {
+      id: 1,
+      login: 'user1',
+      email: 'user1@example.com',
+      review: 'Great system!',
+    },
+    {
+      id: 2,
+      login: 'user2',
+      email: 'user2@example.com',
+      review: 'Awesome platform!',
+    },
+    {
+      id: 3,
+      login: 'user3',
+      email: 'user3@example.com',
+      review: 'Very helpful!',
+    },
+  ])
+
+  const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setStatus(event.target.value)
+  }
+
+  const handleSaveStatus = () => {
+    // Save the status using your preferred method (e.g., API call, local storage, etc.)
+    console.log('Status saved:', status)
+  }
+
+  const handleAvatarUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setAvatar(reader.result as string)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <div className="flex items-center">
-          <div className="rounded-full w-16 h-16 bg-gray-300"></div>
-          <div className="ml-4">
-            <h2 className="text-2xl font-bold">Имя Пользователя</h2>
-            <div className="flex items-center mt-2">
-              <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-              <p className="text-sm ml-1">Принято</p>
-            </div>
-          </div>
-        </div>
-        <div className="mt-4">
-          <p>Анкета еще не отправлена</p>
-          <Link
-            to="/calculator"
-            className="text-my-green-2 hover:text-black transition underline"
-          >
-            Ссылка на анкету
-          </Link>
-        </div>
-        <div className="mt-4">
-          <textarea
-            className="w-full h-20 p-2 border border-gray-300 rounded"
-            placeholder="Напишите свой пост..."
-          ></textarea>
-          <div className="flex flex-col md:flex-row items-center mt-2">
-            <input type="file" className="mr-2 mb-2 md:mb-0" />
-            <button type="submit" className="md:ml-2">
-              <Button isFilled={true}>Отправить</Button>
-            </button>
-          </div>
-        </div>
+    <CenteredContainer>
+      <Avatar
+        alt="User Avatar"
+        src={avatar || '/path/to/default-avatar.png'}
+        sx={{ width: 100, height: 100 }}
+      />
+      <Typography variant="h5" component="div" sx={{ marginTop: 10 }}>
+        Your Name
+      </Typography>
+      <div>
+        <input type="file" accept="image/*" onChange={handleAvatarUpload} />
       </div>
-    </div>
+      <div>
+        <TextField
+          label="Status"
+          variant="outlined"
+          value={status}
+          onChange={handleStatusChange}
+          sx={{ marginTop: 10 }}
+        />
+        <Button
+          variant="contained"
+          onClick={handleSaveStatus}
+          sx={{ marginTop: 10 }}
+        >
+          Save
+        </Button>
+      </div>
+      <div>
+        <h2>Login: Your Login</h2>
+        <h2>Email: Your Email</h2>
+        <List>
+          {users.map((user) => (
+            <ListItem key={user.id}>
+              <ListItemText primary={user.login} secondary={user.review} />
+            </ListItem>
+          ))}
+        </List>
+      </div>
+      <Link to="/calculator">Go to Calculator</Link>
+    </CenteredContainer>
   )
 }
 
