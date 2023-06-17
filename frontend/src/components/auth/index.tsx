@@ -82,9 +82,3 @@ export const AuthRootComponent: React.FC = (): JSX.Element => {
     </div>
   )
 }
-
-// {
-//   login: string
-//   email: string
-//   password: string
-// }

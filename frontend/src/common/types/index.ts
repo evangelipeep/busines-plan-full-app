@@ -15,17 +15,14 @@ export interface IPropsRegister {
     setRepeatPassword: ( value: string ) => void
 }
 
-
-
 export interface IForm {
-    name: string
-    explanation: string
-    email: string
     q1: string
     q2: string
     q3: string
     q4: string
+    name: string
+    explanation: string
+    email: string
+    phone: string
     q5: string
-    phone: number
-    
-}
+  }
