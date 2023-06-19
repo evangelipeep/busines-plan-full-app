@@ -34,8 +34,8 @@ export const SectionOnHome = () => {
       >
         Начните своё дело прямо сейчас!
       </motion.h2>
-      <div className="mt-10 xl:mt-20">
-        <a href="#description">
+      <div className="mt-10 xl:mt-20 ">
+        <a className="mr-5" href="#description">
           <Button isFilled={true} children="ПОЕХАЛИ"></Button>
         </a>
       </div>

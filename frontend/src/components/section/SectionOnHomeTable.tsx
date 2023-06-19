@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom'
 import { GridElement } from './../GridElement'
+import { Button } from '../button/Button'
 
 export const SectionOnHomeTable = () => {
   return (
@@ -43,6 +45,9 @@ export const SectionOnHomeTable = () => {
           <GridElement text="И много других сфер" img="./../images/img-8.png" />
         </ul>
       </div>
+      <Link className="flex justify-center" to="/calculator">
+        <Button hasBorder={true} children="Отправить анкету"></Button>
+      </Link>
     </section>
   )
 }

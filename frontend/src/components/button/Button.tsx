@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
 const borderStyles =
-  'border-2 font-bold border-black hover:border-white hover:text-white rounded-lg'
+  'border-2 font-bold border-black hover:border-white rounded-lg'
 const filledStyles =
   'bg-my-green rounded-lg font-bold py-4 px-6 mx-0 hover:bg-my-green-2 hover:text-white'
 
