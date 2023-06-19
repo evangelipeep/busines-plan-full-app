@@ -70,21 +70,10 @@ export const AuthRootComponent: React.FC = (): JSX.Element => {
           {location.pathname === '/login' ? (
             <Login register={register} errors={errors} />
           ) : location.pathname === '/register' ? (
-            <Register
-              setLogin={setLogin}
-              setEmail={setEmail}
-              setPassword={setPassword}
-              setRepeatPassword={setRepeatPassword}
-            />
+            <Register register={register} errors={errors} />
           ) : null}
         </Box>
       </form>
     </div>
   )
 }
-
-// {
-//   login: string
-//   email: string
-//   password: string
-// }
