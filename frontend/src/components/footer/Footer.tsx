@@ -6,7 +6,7 @@ export const Footer = () => {
       <span className='text-sm font-bold'>
         © 2023
       </span>
-      <a href='https://github.com/evangelipeep' className='hover:underline'>
+      <a href='https://github.com/AnastasiiaFalcon' className='hover:underline'>
         <GitHub
         
         className='opacity-100 hover:opacity-80'/>
