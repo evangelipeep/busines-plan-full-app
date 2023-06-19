@@ -8,11 +8,12 @@ TContext = any,
     errors: FieldErrors<TFieldValues>
 }
 
-export interface IPropsRegister {
-    setLogin: ( value: string ) => void
-    setEmail: ( value: string ) => void
-    setPassword: ( value: string ) => void
-    setRepeatPassword: ( value: string ) => void
+export interface IPropsRegister<
+TFieldValues extends FieldValues = FieldValues,
+TContext = any,
+> {
+    register: UseFormRegister<TFieldValues>
+    errors: FieldErrors<TFieldValues>
 }
 
 export interface IForm {

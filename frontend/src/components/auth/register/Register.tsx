@@ -6,7 +6,7 @@ import { IPropsRegister } from '../../../common/types'
 export const Register: React.FC<IPropsRegister> = (
   props: IPropsRegister
 ): JSX.Element => {
-  const { setEmail, setPassword, setLogin, setRepeatPassword } = props
+  const { register, errors } = props
   return (
     <div>
       <Typography variant="h4" padding={3} textAlign="center">
@@ -22,7 +22,13 @@ export const Register: React.FC<IPropsRegister> = (
         label="Email"
         variant="outlined"
         placeholder="Введите свою почту..."
-        onChange={(e) => setEmail(e.target.value)}
+        helperText={errors.email ? `${errors.email.message}` : ''}
+        {...register('email', {
+          required: 'Это обязательное поле вообще-то',
+          pattern:
+            /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/,
+        })}
+        error={!!errors.email}
       />
       <TextField
         fullWidth={true}
@@ -30,7 +36,11 @@ export const Register: React.FC<IPropsRegister> = (
         label="Логин"
         variant="outlined"
         placeholder="Введите логин.."
-        onChange={(e) => setLogin(e.target.value)}
+        helperText={errors.login ? `${errors.login.message}` : ''}
+        {...register('login', {
+          required: 'Это обязательное поле вообще-то',
+        })}
+        error={!!errors.login}
       />
       <TextField
         type="password"
@@ -39,7 +49,12 @@ export const Register: React.FC<IPropsRegister> = (
         label="Password"
         variant="outlined"
         placeholder="Введите пароль..."
-        onChange={(e) => setPassword(e.target.value)}
+        helperText={errors.password ? `${errors.password.message}` : ''}
+        {...register('password', {
+          required: 'Это обязательное поле вообще-то',
+          minLength: 8,
+        })}
+        error={!!errors.password}
       />
       <TextField
         type="password"
@@ -48,7 +63,12 @@ export const Register: React.FC<IPropsRegister> = (
         label="Password"
         variant="outlined"
         placeholder="Повторите пароль..."
-        onChange={(e) => setRepeatPassword(e.target.value)}
+        helperText={errors.password ? `${errors.password.message}` : ''}
+        {...register('password', {
+          required: 'Это обязательное поле вообще-то',
+          minLength: 8,
+        })}
+        error={!!errors.password}
       />
 
       <Button

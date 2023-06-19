@@ -13,7 +13,6 @@ export const AuthRootComponent: React.FC = (): JSX.Element => {
   const [login, setLogin] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [repeatPassword, setRepeatPassword] = useState('')
   const location = useLocation()
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
@@ -70,12 +69,7 @@ export const AuthRootComponent: React.FC = (): JSX.Element => {
           {location.pathname === '/login' ? (
             <Login register={register} errors={errors} />
           ) : location.pathname === '/register' ? (
-            <Register
-              setLogin={setLogin}
-              setEmail={setEmail}
-              setPassword={setPassword}
-              setRepeatPassword={setRepeatPassword}
-            />
+            <Register register={register} errors={errors} />
           ) : null}
         </Box>
       </form>
