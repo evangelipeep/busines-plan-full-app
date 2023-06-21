@@ -72,6 +72,7 @@ export const Register: React.FC<IPropsRegister> = (
       />
 
       <Button
+        href="https://test-bpa.vercel.app/profile"
         type="submit"
         variant="contained"
         sx={{
